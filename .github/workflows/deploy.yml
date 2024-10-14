@@ -21,9 +21,8 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Export
-        run: npm run export
+        env:
+          NEXT_PUBLIC_BASE_PATH: /swiftstock-wms  # Replace with your repo name
 
       - name: Add .nojekyll file
         run: touch ./out/.nojekyll

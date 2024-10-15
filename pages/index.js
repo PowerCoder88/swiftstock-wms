@@ -11,6 +11,8 @@ export default function Home() {
   const [chartData, setChartData] = useState(null)
   const [userType, setUserType] = useState('')
   const [userCompany, setUserCompany] = useState('')
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchDashboardData = () => {
@@ -57,6 +59,30 @@ export default function Home() {
     }
     fetchDashboardData()
   }, [])
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        // Simulate an API call or data loading
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        console.log('Data loaded successfully');
+        setIsLoading(false);
+      } catch (err) {
+        console.error('Loading error:', err);
+        setError(err.message);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (isLoading) {
+    return <div>Loading... (This message is from the React component)</div>;
+  }
 
   return (
     <div>

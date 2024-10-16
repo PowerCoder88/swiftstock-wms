@@ -1,9 +1,12 @@
 const path = require('path')
 
+const repo = 'WMS' // Replace with your repository name
+
 module.exports = {
   reactStrictMode: true,
-  basePath: process.env.NODE_ENV === 'production' ? '/WMS' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/WMS/' : '',
+  output: 'export',
+  basePath: '/WMS',
+  assetPrefix: process.env.NODE_ENV === 'production' ? `/${repo}/` : '',
   webpack: (config) => {
     config.resolve.alias['@'] = path.resolve(__dirname)
     return config
